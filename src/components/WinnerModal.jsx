@@ -8,11 +8,21 @@ export function WinnerModal({ winner, resetGame }) {
   const [sectionClass, setSectionClass] = useState("winner");
   return (
     <section className={sectionClass}>
-
       <div className="text">
-      <button className="close-window-button" onClick={() => setSectionClass("closeWindow")}>X</button>
+        <button
+          className="close-window-button"
+          onClick={() => setSectionClass("closeWindow")}
+        >
+          X
+        </button>
         <h2>{winnerText}</h2>
-        <header className="win">{winner && <Square>{winner}</Square>}</header>
+        {winner ? (
+          <header className="win">
+            {winner && <Square>{winner}</Square>}{" "}
+          </header>
+        ) : (
+          <header>🤛🏻❌⚪🤜🏻 </header>
+        )}
         <footer>
           <button onClick={resetGame}>Restart</button>
         </footer>
